@@ -1,0 +1,661 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>WABase — рассылки в WhatsApp без блокировок номера | WhatsApp Business API в Казахстане</title>
+<meta name="description" content="Официальный WhatsApp Business API под ключ за 1–3 дня: рассылки по своей базе, чат-бот, все менеджеры на одном номере и интеграция с amoCRM, Битрикс24, 1С. Гарантия окупаемости первой рассылки.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://go.wabase.ai/">
+<meta name="theme-color" content="#07120E">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://go.wabase.ai/">
+<meta property="og:title" content="Рассылки в WhatsApp, за которые не блокируют номер — WABase">
+<meta property="og:description" content="Официальный WhatsApp Business API под ключ: рассылки, чат-бот и CRM. Подключение за 1–3 дня.">
+<meta property="og:image" content="https://wabase.ai/brand/wabase-og.png">
+<meta property="og:locale" content="ru_RU">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="/fonts/onest-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preconnect" href="https://us-assets.i.posthog.com" crossorigin>
+<style>
+@font-face{font-family:Onest;font-style:normal;font-display:swap;font-weight:100 900;src:url(/fonts/onest-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Onest;font-style:normal;font-display:swap;font-weight:100 900;src:url(/fonts/onest-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:Onest;font-style:normal;font-display:swap;font-weight:100 900;src:url(/fonts/onest-latin-ext-wght-normal.woff2) format("woff2");unicode-range:U+20B8}
+:root{--ink:#0B1411;--ink2:#33433D;--muted:#5F6F68;--line:#E2E7E4;--bg:#F5F7F5;--card:#fff;--brand:#0A7A55;--brand-d:#065C3F;--dark:#06100C;--dark2:#0D1D17;--dline:rgba(255,255,255,.1);--mint:#7CF0B2;--r:22px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;font-family:Onest,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+a{color:inherit}
+img,svg{display:block}
+.w{max-width:1200px;margin:0 auto;padding:0 24px}
+.sec{padding:120px 0}
+.kick{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--brand)}
+.kick:before{content:"";width:18px;height:1.5px;background:currentColor}
+.h2{font-size:clamp(34px,4.4vw,56px);line-height:1.04;letter-spacing:-.035em;font-weight:700;margin:18px 0 0;max-width:820px}
+.lead{font-size:19px;line-height:1.6;color:var(--muted);max-width:640px;margin:20px 0 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 28px;border-radius:999px;font:600 16px/1 Onest,system-ui,sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .15s ease,background .15s ease,box-shadow .15s ease;white-space:nowrap}
+.btn:active{transform:translateY(1px)}
+.btn-p{background:var(--brand);color:#fff;box-shadow:0 10px 30px -10px rgba(10,122,85,.6)}
+.btn-p:hover{background:var(--brand-d)}
+.btn-l{background:#fff;color:var(--ink)}
+.btn-l:hover{background:#EAF3EE}
+.btn-g{background:rgba(255,255,255,.06);color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.18)}
+.btn-g:hover{background:rgba(255,255,255,.12)}
+.ico{width:20px;height:20px;flex:none}
+/* header */
+.hdr{position:absolute;inset:0 0 auto;z-index:20}
+.hdr .w{display:flex;align-items:center;justify-content:space-between;gap:20px;height:84px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;font-weight:700;font-size:21px;letter-spacing:-.02em}
+.logo b{color:var(--mint);font-weight:700}
+.nav{display:flex;gap:30px;font-size:15px;color:rgba(255,255,255,.72)}
+.nav a{text-decoration:none}.nav a:hover{color:#fff}
+.hdr .btn{min-height:46px;padding:0 22px;font-size:15px}
+/* hero */
+.hero{position:relative;background:var(--dark);color:#fff;overflow:hidden;padding:150px 0 0}
+.hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:28px 28px;-webkit-mask-image:linear-gradient(180deg,#000 30%,transparent 90%);mask-image:linear-gradient(180deg,#000 30%,transparent 90%)}
+.hero:after{content:"";position:absolute;width:760px;height:760px;right:-160px;top:40px;background:radial-gradient(closest-side,rgba(10,122,85,.45),transparent);pointer-events:none}
+.hero-g{position:relative;z-index:1;display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:end}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:8px 14px 8px 8px;border-radius:999px;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);font-size:14px;color:rgba(255,255,255,.85)}
+.pill i{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--brand)}
+.h1{font-size:clamp(40px,5.6vw,74px);line-height:.98;letter-spacing:-.045em;font-weight:700;margin:26px 0 0}
+.h1 em{font-style:normal;color:var(--mint)}
+.hero p.sub{font-size:20px;line-height:1.55;color:rgba(255,255,255,.7);max-width:560px;margin:26px 0 0}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:36px}
+.trust{display:flex;flex-wrap:wrap;gap:10px 26px;margin:34px 0 0;padding:0;list-style:none;font-size:15px;color:rgba(255,255,255,.75)}
+.trust li{display:flex;align-items:center;gap:9px}
+.hero-l{padding-bottom:96px}
+/* phone */
+.phone-wrap{position:relative;justify-self:center;width:340px;max-width:100%}
+.phone{position:relative;width:100%;border-radius:46px 46px 0 0;background:#111816;padding:12px 12px 0;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 80px -20px rgba(0,0,0,.7)}
+.scr{border-radius:36px 36px 0 0;overflow:hidden;background:#EFEAE2;height:540px;display:flex;flex-direction:column}
+.wa-h{display:flex;align-items:center;gap:10px;background:#fff;color:#111;padding:40px 16px 12px;border-bottom:1px solid #e6e6e6}
+.av{width:36px;height:36px;border-radius:50%;background:var(--brand);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:15px;flex:none}
+.wa-n{font-weight:600;font-size:15px;line-height:1.2;display:flex;align-items:center;gap:5px}
+.wa-s{font-size:12px;color:#667;line-height:1.2}
+.wa-b{flex:1;padding:16px 12px;display:flex;flex-direction:column;gap:8px;font-size:14px;line-height:1.42;color:#111}
+.day{align-self:center;background:#fff;border-radius:8px;padding:3px 10px;font-size:11.5px;color:#556;box-shadow:0 1px 0 rgba(0,0,0,.06)}
+.msg{max-width:86%;background:#fff;border-radius:4px 14px 14px 14px;padding:6px 6px 8px;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.msg .img{height:118px;border-radius:10px;background:linear-gradient(135deg,#0A7A55,#0D3B2C);position:relative;overflow:hidden}
+.msg .img span{position:absolute;left:14px;bottom:12px;color:#fff;font-weight:700;font-size:22px;letter-spacing:-.02em;line-height:1}
+.msg .img small{display:block;font-size:11px;font-weight:500;opacity:.8;margin-bottom:4px;letter-spacing:0}
+.msg p{margin:8px 6px 0}
+.tm{display:block;text-align:right;font-size:10.5px;color:#889;margin:2px 4px 0}
+.wbtn{display:flex;flex-direction:column;margin:6px -6px -8px;border-top:1px solid #eee}
+.wbtn span{padding:9px;text-align:center;color:#0A84C6;font-weight:600;font-size:13.5px;border-bottom:1px solid #eee}
+.wbtn span:last-child{border-bottom:0}
+.me{align-self:flex-end;background:#D9FDD3;border-radius:14px 4px 14px 14px;padding:7px 10px 6px;max-width:70%;box-shadow:0 1px 0 rgba(0,0,0,.08)}
+.me .tm{color:#5a8;}
+.float{position:absolute;z-index:3;display:flex;align-items:center;gap:10px;background:#fff;color:var(--ink);border-radius:16px;padding:12px 16px 12px 12px;font-size:14px;font-weight:600;line-height:1.25;box-shadow:0 20px 40px -12px rgba(0,0,0,.45);white-space:nowrap}
+.float small{display:block;font-weight:500;color:var(--muted);font-size:12.5px}
+.float i{display:flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:10px;background:#E6F4EE;flex:none}
+.f1{left:-120px;top:170px}.f2{right:-48px;top:360px}
+/* stats */
+.stats{position:relative;z-index:1;border-top:1px solid var(--dline);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.stat{padding:34px 28px 38px;border-left:1px solid var(--dline)}
+.stat:first-child{border-left:0;padding-left:0}
+.stat b{display:block;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.04em;line-height:1;font-weight:700}
+.stat span{display:block;margin-top:10px;font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.4}
+.note-d{position:relative;z-index:1;font-size:12.5px;color:rgba(255,255,255,.38);padding:0 0 28px}
+/* logos */
+.logos{background:#fff;border-bottom:1px solid var(--line)}
+.logos .w{display:flex;align-items:center;gap:40px;padding-top:34px;padding-bottom:34px}
+.logos p{margin:0;font-size:14px;color:var(--muted);line-height:1.35;flex:none;width:150px}
+.lw{display:flex;flex-wrap:wrap;gap:14px 40px;align-items:center}
+.lw span{font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;color:#8A9690;white-space:nowrap}
+/* problem */
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:56px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:32px}
+.pcard .n{font-size:14px;font-weight:600;color:#B4483A;letter-spacing:.04em}
+.pcard h3{font-size:23px;line-height:1.2;letter-spacing:-.02em;margin:14px 0 10px}
+.pcard p{margin:0;color:var(--muted);font-size:16px}
+/* cases */
+.cases{background:#fff}
+.cgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:56px}
+.case{border:1px solid var(--line);border-radius:28px;padding:36px;display:flex;flex-direction:column;gap:18px;background:linear-gradient(180deg,#FBFCFB,#fff)}
+.case .tag{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;color:var(--muted)}
+.case .tag b{color:var(--brand);font-weight:600}
+.case h3{margin:0;font-size:30px;letter-spacing:-.03em;line-height:1.05}
+.case p{margin:0;color:var(--ink2);font-size:16.5px}
+.kpi{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:auto;padding-top:8px}
+.kpi div{background:var(--bg);border-radius:16px;padding:16px 18px}
+.kpi b{display:block;font-size:30px;letter-spacing:-.035em;line-height:1.05}
+.kpi span{display:block;font-size:13.5px;color:var(--muted);line-height:1.35;margin-top:6px}
+.src{font-size:13px;color:var(--muted);margin-top:22px}
+/* features */
+.fgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:28px;overflow:hidden;margin-top:56px}
+.feat{background:#fff;padding:34px}
+.feat svg{width:28px;height:28px;color:var(--brand)}
+.feat h3{font-size:20px;letter-spacing:-.015em;margin:22px 0 8px;line-height:1.25}
+.feat p{margin:0;color:var(--muted);font-size:15.5px}
+/* steps */
+.dark{background:var(--dark);color:#fff}
+.dark .kick{color:var(--mint)}
+.dark .lead{color:rgba(255,255,255,.62)}
+.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin-top:56px;counter-reset:s}
+.step{background:var(--dark2);border:1px solid var(--dline);border-radius:var(--r);padding:34px;position:relative}
+.step .d{font-size:13px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mint)}
+.step h3{font-size:24px;letter-spacing:-.02em;margin:40px 0 10px;line-height:1.15}
+.step p{margin:0;color:rgba(255,255,255,.62);font-size:16px}
+.step .bar{position:absolute;left:34px;right:34px;top:76px;height:2px;background:rgba(255,255,255,.1);border-radius:2px}
+.step .bar:after{content:"";position:absolute;inset:0 auto 0 0;background:var(--mint);border-radius:2px}
+.s1 .bar:after{width:33%}.s2 .bar:after{width:66%}.s3 .bar:after{width:100%}
+/* calc */
+.cwrap{display:grid;grid-template-columns:1.1fr .9fr;gap:20px;margin-top:56px}
+.cin{background:#fff;border:1px solid var(--line);border-radius:28px;padding:40px;display:flex;flex-direction:column;gap:34px}
+.rng label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:16px;color:var(--ink2)}
+.rng output{font-size:24px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:10px 0 0}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(90deg,var(--brand) var(--p,30%),#E2E8E5 var(--p,30%))}
+input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:#E2E8E5}
+input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--brand)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid var(--brand);margin-top:-10px;box-shadow:0 4px 10px rgba(0,0,0,.15)}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--brand)}
+.fine{font-size:13.5px;color:var(--muted);margin:0;line-height:1.5}
+.cout{background:var(--dark);color:#fff;border-radius:28px;padding:40px;display:flex;flex-direction:column;gap:16px}
+.row{display:flex;justify-content:space-between;gap:12px;font-size:16px;color:rgba(255,255,255,.62)}
+.row b{color:#fff;font-weight:600;white-space:nowrap}
+.hr{height:1px;background:var(--dline);margin:6px 0}
+.roi{font-size:clamp(64px,8vw,96px);line-height:.9;font-weight:700;letter-spacing:-.05em;color:var(--mint);margin:4px 0 8px}
+/* compare */
+.tbl{margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:28px;overflow:hidden}
+.tr{display:grid;grid-template-columns:1fr 1.15fr 1.15fr;border-top:1px solid var(--line)}
+.tr:first-child{border-top:0;background:var(--bg);font-size:14px;font-weight:600;color:var(--muted)}
+.tr>div{padding:20px 28px}
+.tr>div:first-child{font-weight:600}
+.tr .y{color:var(--brand);font-weight:600;background:rgba(10,122,85,.04)}
+.tr .x{color:var(--muted)}
+/* price */
+.pgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:20px;margin-top:56px}
+.plan{background:#fff;border-radius:28px;padding:44px;box-shadow:0 0 0 2px var(--brand),0 30px 60px -30px rgba(10,122,85,.35)}
+.plan .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.plan h3{margin:0;font-size:26px;letter-spacing:-.02em}
+.badge{background:#E6F4EE;color:var(--brand);border-radius:999px;padding:6px 14px;font-size:13.5px;font-weight:600}
+.price{font-size:clamp(52px,6vw,68px);font-weight:700;letter-spacing:-.045em;line-height:1;margin:26px 0 0}
+.price small{font-size:18px;font-weight:500;color:var(--muted);letter-spacing:0}
+.inc{list-style:none;padding:0;margin:28px 0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 20px;font-size:15.5px;color:var(--ink2)}
+.inc li{display:flex;gap:10px;align-items:flex-start}
+.inc svg{margin-top:4px;color:var(--brand);flex:none}
+.guar{background:var(--dark);color:#fff;border-radius:28px;padding:44px;display:flex;flex-direction:column;gap:16px;justify-content:flex-end;position:relative;overflow:hidden}
+.guar:before{content:"";position:absolute;width:340px;height:340px;right:-120px;top:-120px;border-radius:50%;box-shadow:0 0 0 1px rgba(124,240,178,.25),0 0 0 50px rgba(124,240,178,.04),0 0 0 100px rgba(124,240,178,.03)}
+.guar b.big{font-size:clamp(40px,4.6vw,56px);letter-spacing:-.04em;line-height:1;color:var(--mint)}
+.guar h3{font-size:26px;line-height:1.15;letter-spacing:-.02em;margin:0}
+.guar p{margin:0;color:rgba(255,255,255,.62);font-size:16px}
+/* form */
+.fsec{background:#E9F2EE}
+.fg{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.flist{list-style:none;padding:0;margin:36px 0 0;display:flex;flex-direction:column;gap:18px}
+.flist li{display:flex;gap:16px;align-items:flex-start;font-size:17px;color:var(--ink2)}
+.flist b{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:#fff;color:var(--brand);font-size:14px;flex:none}
+.form{background:#fff;border-radius:28px;padding:40px;box-shadow:0 30px 60px -30px rgba(6,16,12,.25);display:flex;flex-direction:column;gap:24px}
+.fld{display:flex;flex-direction:column;gap:8px;font-size:15px;font-weight:600}
+.fld input{height:56px;border:1px solid #CFD9D4;border-radius:14px;padding:0 18px;font:400 17px Onest,system-ui,sans-serif;color:var(--ink);background:#fff;outline:none;transition:border-color .15s,box-shadow .15s}
+.fld input:focus{border-color:var(--brand);box-shadow:0 0 0 4px rgba(10,122,85,.12)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+fieldset{border:0;margin:0;padding:0}
+legend{font-size:15px;font-weight:600;padding:0;margin-bottom:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips label{position:relative}
+.chips input{position:absolute;opacity:0;width:1px;height:1px}
+.chips span{display:inline-flex;align-items:center;min-height:44px;padding:0 16px;border-radius:999px;border:1px solid #CFD9D4;font-size:15px;cursor:pointer;transition:all .12s;user-select:none}
+.chips span:hover{border-color:var(--brand)}
+.chips input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.chips input:focus-visible+span{box-shadow:0 0 0 4px rgba(10,122,85,.25)}
+.cons{display:flex;gap:12px;align-items:flex-start;font-size:14px;color:var(--muted);line-height:1.5;font-weight:400}
+.cons input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--brand);flex:none}
+.err{color:#B4483A;font-size:14px;margin:-8px 0 0;min-height:0}
+.form .btn{width:100%}
+.ok{display:none;text-align:center;padding:24px 8px}
+.ok h3{font-size:28px;letter-spacing:-.02em;margin:16px 0 8px}
+.ok p{color:var(--muted);margin:0 0 24px}
+.form.done .fbody{display:none}.form.done .ok{display:block}
+/* faq */
+.faq{max-width:860px;margin:56px auto 0}
+details{border-top:1px solid var(--line);padding:26px 0}
+details:last-child{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:24px;font-size:20px;font-weight:600;letter-spacing:-.015em}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"";width:12px;height:12px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg) translate(-3px,-3px);flex:none;transition:transform .2s}
+details[open] summary:after{transform:rotate(225deg)}
+details p{margin:14px 0 0;color:var(--muted);font-size:16.5px;max-width:720px}
+/* final */
+.final{background:var(--dark);color:#fff;position:relative;overflow:hidden}
+.final .w{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-top:110px;padding-bottom:110px;position:relative;z-index:1}
+.final:after{content:"";position:absolute;width:900px;height:900px;left:-300px;bottom:-560px;background:radial-gradient(closest-side,rgba(10,122,85,.5),transparent)}
+.final h2{font-size:clamp(38px,5.4vw,72px);line-height:1;letter-spacing:-.045em;margin:0;max-width:760px}
+.final p{color:rgba(255,255,255,.62);font-size:19px;margin:20px 0 0}
+footer{background:var(--dark);color:rgba(255,255,255,.45);font-size:14px;border-top:1px solid var(--dline)}
+footer .w{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:28px;padding-bottom:28px}
+footer a{text-decoration:none}footer a:hover{color:#fff}
+.mbar{display:none}
+@media (max-width:1020px){
+ .hero-g{grid-template-columns:1fr}.hero-l{padding-bottom:40px}
+ .phone-wrap{width:300px}.f1{left:-70px;top:120px}.f2{right:-60px}
+ .stats{grid-template-columns:repeat(2,minmax(0,1fr))}.stat:nth-child(3){border-left:0;padding-left:0}.stat{border-top:1px solid var(--dline)}
+ .grid3,.steps,.fgrid{grid-template-columns:1fr}.cgrid,.cwrap,.pgrid,.fg{grid-template-columns:1fr}
+ .nav{display:none}.logos .w{flex-direction:column;align-items:flex-start;gap:18px}.logos p{width:auto}
+}
+@media (max-width:640px){
+ body{font-size:16px}.sec{padding:84px 0}.w{padding:0 20px}
+ .hero{padding-top:118px}.hdr .btn{display:none}
+ .f1,.f2{display:none}.phone-wrap{width:280px}.scr{height:450px}
+ .stat{padding:24px 16px 26px 0}.stat:nth-child(even){padding-left:16px}
+ .case,.cin,.cout,.plan,.guar,.form{padding:26px;border-radius:24px}
+ .case h3{font-size:26px}.kpi b{font-size:26px}
+ .tbl{overflow-x:auto}.tr{min-width:640px}
+ .inc,.two{grid-template-columns:1fr}
+ .btn{width:100%}.cta-row .btn{width:100%}
+ summary{font-size:18px}
+ .mbar{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:50;gap:8px;padding:8px;border-radius:999px;background:rgba(6,16,12,.92);box-shadow:0 10px 30px rgba(0,0,0,.35);transform:translateY(140%);transition:transform .25s}
+ .mbar.on{transform:none}.mbar .btn{min-height:48px;padding:0 16px;font-size:15px}.mbar .btn-g{flex:none;width:48px;padding:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+ <div class="w">
+  <a class="logo" href="#top" aria-label="WABase — на главную">
+   <svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="9" fill="#0A7A55"/><path d="M8.5 16.5l4.6 4.6L23.5 10.7" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+   <span>Wa<b>Base</b></span>
+  </a>
+  <nav class="nav" aria-label="Разделы">
+   <a href="#cases">Кейсы</a><a href="#how">Подключение</a><a href="#calc">Расчёт</a><a href="#price">Цена</a><a href="#faq">Вопросы</a>
+  </nav>
+  <a class="btn btn-p" href="#form" data-cta="header">Подключить</a>
+ </div>
+</header>
+
+<main id="top">
+<section class="hero">
+ <div class="w">
+  <div class="hero-g">
+   <div class="hero-l">
+    <span class="pill"><i><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Официальный партнёр Meta · WhatsApp Business API</span>
+    <h1 class="h1">Рассылки в WhatsApp, за которые <em>не блокируют</em> номер</h1>
+    <p class="sub">Подключаем официальный WhatsApp Business API под ключ за 1–3 дня. Рассылки по своей базе, чат-бот и все менеджеры на одном номере — с интеграцией в вашу CRM.</p>
+    <div class="cta-row">
+     <a class="btn btn-p" href="#form" data-cta="hero">Рассчитать рассылку для моей базы</a>
+     <a class="btn btn-g js-wa" href="https://wa.me/77017433301" target="_blank" rel="noopener" data-cta="hero"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.3A8.5 8.5 0 1 1 20.5 11.6z"/></svg>Написать в WhatsApp</a>
+    </div>
+    <ul class="trust">
+     <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#7CF0B2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Верификацию Meta проходим за вас</li>
+     <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#7CF0B2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Номер остаётся ваш</li>
+     <li><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="#7CF0B2" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Гарантия окупаемости первой рассылки</li>
+    </ul>
+   </div>
+   <div class="phone-wrap" aria-hidden="true">
+    <div class="float f1"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A7A55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3.5v5.2c0 4.6-3.2 7.6-7.5 9.3-4.3-1.7-7.5-4.7-7.5-9.3V6.5z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.4"/></svg></i><span>Номер подтверждён<small>официальный аккаунт</small></span></div>
+    <div class="float f2"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A7A55" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><path d="M3.5 9.5h17M8 14h4"/></svg></i><span>Сделка создана<small>заявка ушла в CRM</small></span></div>
+    <div class="phone">
+     <div class="scr">
+      <div class="wa-h">
+       <div class="av">W</div>
+       <div><div class="wa-n">Ваша компания <svg width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#25D366"/><path d="M7.5 12.3l3 3 6-6" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="wa-s">Бизнес-аккаунт</div></div>
+      </div>
+      <div class="wa-b">
+       <span class="day">Сегодня</span>
+       <div class="msg">
+        <div class="img"><span><small>Только для клиентов</small>−10% на сервис</span></div>
+        <p>Ерлан, здравствуйте! Ваш автомобиль пора на плановое ТО. До конца месяца — скидка 10% на работы. Записать вас?</p>
+        <span class="tm">10:02</span>
+        <div class="wbtn"><span>Записаться на ТО</span><span>Напомнить позже</span></div>
+       </div>
+       <div class="me">Записаться на ТО<span class="tm">10:04 ✓✓</span></div>
+       <div class="msg"><p style="margin-top:2px">Готово! Ждём вас в четверг в 11:00. Менеджер Айдос.</p><span class="tm">10:04</span></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+  <div class="stats">
+   <div class="stat"><b>17</b><span>компаний отправляют рассылки через WABase</span></div>
+   <div class="stat"><b>6 стран</b><span>Казахстан, Кыргызстан, ОАЭ, Финляндия, Кипр, Румыния</span></div>
+   <div class="stat"><b>41 000+</b><span>сообщений клиентам за последние 30 дней</span></div>
+   <div class="stat"><b>с 2019</b><span>команда Flowsell: 2 500+ клиентов в 77 странах</span></div>
+  </div>
+  <div class="note-d">Данные платформы WABase на ноябрь 2026.</div>
+ </div>
+</section>
+
+<section class="logos" aria-label="Клиенты">
+ <div class="w">
+  <p>Нам доверяют рассылки</p>
+  <div class="lw">
+   <span>Toyota Center Kostanay</span><span>Toyota City Astana</span><span>Nova Laser</span><span>My Pool</span><span>Hairlab Dubai</span><span>Ogee Modern Clinic</span><span>Kaelo Beauty Clinic</span><span>Buzz Barbershop</span>
+  </div>
+ </div>
+</section>
+
+<section class="sec">
+ <div class="w">
+  <span class="kick">Знакомо?</span>
+  <h2 class="h2">Обычный WhatsApp не создан для рассылок</h2>
+  <div class="grid3">
+   <div class="pcard"><span class="n">01</span><h3>Номер заблокировали посреди рассылки</h3><p>Вместе с ним пропали переписки и клиенты, которые писали на этот номер годами.</p></div>
+   <div class="pcard"><span class="n">02</span><h3>База из CRM лежит мёртвым грузом</h3><p>Тысячи клиентов, а писать им страшно: «серые» сервисы банят, вручную — неделями.</p></div>
+   <div class="pcard"><span class="n">03</span><h3>Менеджеры пишут с личных телефонов</h3><p>Не видно, кто ответил и когда. Уволился сотрудник — ушли и его клиенты.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec cases" id="cases">
+ <div class="w">
+  <span class="kick">Кейсы клиентов</span>
+  <h2 class="h2">Как WhatsApp работает на бизнес наших клиентов</h2>
+  <p class="lead">Реальные цифры за последние 30 дней — из нашей платформы.</p>
+  <div class="cgrid">
+   <article class="case">
+    <div class="tag"><b>Автодилер</b><span>Костанай · с мая 2026</span></div>
+    <h3>Toyota Center Kostanay</h3>
+    <p>Электронный чек и сервисные уведомления приходят клиенту в WhatsApp сразу после оплаты — без SMS и бумажных чеков. Клиент отвечает в тот же чат, менеджер видит всю историю.</p>
+    <div class="kpi"><div><b>10 589</b><span>сообщений клиентам за 30 дней</span></div><div><b>≈4 900</b><span>диалогов с клиентами в месяц</span></div></div>
+   </article>
+   <article class="case">
+    <div class="tag"><b>Автодилер</b><span>Астана · с июня 2026</span></div>
+    <h3>Toyota City Astana</h3>
+    <p>Поздравление с покупкой автомобиля и с днём рождения — с персональной скидкой 10% на сервис. Повод вернуться на ТО именно к дилеру.</p>
+    <div class="kpi"><div><b>4 600</b><span>персональных сообщений за 30 дней</span></div><div><b>1 650</b><span>ответов клиентов в WhatsApp</span></div></div>
+   </article>
+   <article class="case">
+    <div class="tag"><b>Студия лазерной эпиляции</b><span>Бишкек · с августа 2026</span></div>
+    <h3>Nova Laser</h3>
+    <p>Напоминания о записи с подтверждением «Да / Нет» в один ответ, уведомления о переносах и ежедневный отчёт о выручке — владельцу прямо в WhatsApp.</p>
+    <div class="kpi"><div><b>4 587</b><span>напоминаний и уведомлений за 30 дней</span></div><div><b>8 813</b><span>ответов клиентов — почти 2 на сообщение</span></div></div>
+   </article>
+   <article class="case">
+    <div class="tag"><b>Детский бассейн</b><span>Алматы · с июля 2026</span></div>
+    <h3>My Pool</h3>
+    <p>Накануне занятия родители получают запрос подтвердить запись с временем и тренером. Администратор заранее видит, кто придёт, и не обзванивает всех вручную.</p>
+    <div class="kpi"><div><b>2 231</b><span>запросов подтверждения за 30 дней</span></div><div><b>6 914</b><span>ответов родителей в WhatsApp</span></div></div>
+   </article>
+  </div>
+  <p class="src">Цифры — из платформы WABase за 30 дней по ноябрь 2026.</p>
+ </div>
+</section>
+
+<section class="sec">
+ <div class="w">
+  <span class="kick">Что получаете</span>
+  <h2 class="h2">Официальный канал вместо риска</h2>
+  <div class="fgrid">
+   <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h12M12 6l6 6-6 6"/><path d="M20 5v14"/></svg><h3>Рассылки по своей базе</h3><p>Тысячи сообщений в день по шаблонам, согласованным с Meta. С кнопками, картинками и именем клиента.</p></div>
+   <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="3"/><path d="M8 21h8M7 9h6M7 13h10"/></svg><h3>Все чаты в одном окне</h3><p>Несколько менеджеров на одном номере, передача диалога и вся история переписки.</p></div>
+   <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><path d="M8.5 6H14a4 4 0 0 1 4 4v5.5M15.5 18H10a4 4 0 0 1-4-4V8.5"/></svg><h3>CRM без ручного переноса</h3><p>amoCRM, Битрикс24, 1С. Переписка и заявки — сразу в карточке сделки.</p></div>
+   <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5"/></svg><h3>Чат-бот 24/7</h3><p>Отвечает ночью и в выходные, квалифицирует клиента и передаёт горячих менеджеру.</p></div>
+   <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3.5v5.2c0 4.6-3.2 7.6-7.5 9.3-4.3-1.7-7.5-4.7-7.5-9.3V6.5z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.4"/></svg><h3>Верификация в Meta</h3><p>Проходим проверку бизнеса за вас — клиенты видят, что пишет настоящая компания.</p></div>
+   <div class="feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="7" y="2.5" width="10" height="19" rx="2.5"/><path d="M11 18.5h2"/></svg><h3>Номер остаётся ваш</h3><p>Режим Coexistence: тот же номер работает и в приложении WhatsApp Business, и через API.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec dark" id="how">
+ <div class="w">
+  <span class="kick">Подключение</span>
+  <h2 class="h2">От заявки до первой рассылки — 1–3 дня</h2>
+  <p class="lead">Всю техническую часть берём на себя. От вас — документы компании и 15 минут на звонок.</p>
+  <div class="steps">
+   <div class="step s1"><span class="d">Шаг 1</span><div class="bar"></div><h3>Разбор и расчёт</h3><p>Смотрим вашу базу и задачи, считаем стоимость рассылки, подбираем шаблоны сообщений.</p></div>
+   <div class="step s2"><span class="d">Шаг 2</span><div class="bar"></div><h3>Верификация и номер</h3><p>Проходим проверку бизнеса в Meta, подключаем номер и связываем его с вашей CRM.</p></div>
+   <div class="step s3"><span class="d">Шаг 3</span><div class="bar"></div><h3>Первая рассылка при вас</h3><p>Запускаем вместе, показываем статистику и обучаем команду. Дальше — с нашей поддержкой.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="calc">
+ <div class="w">
+  <span class="kick">Расчёт</span>
+  <h2 class="h2">Окупится ли рассылка у вас</h2>
+  <p class="lead">Подвигайте ползунки под свой бизнес. Это расчёт, а не обещание: долю покупок задаёте вы.</p>
+  <div class="cwrap">
+   <div class="cin">
+    <div class="rng"><label for="r-base">Контактов в рассылке <output id="o-base">3 000</output></label><input id="r-base" type="range" min="500" max="30000" step="500" value="3000"></div>
+    <div class="rng"><label for="r-check">Средний чек, ₸ <output id="o-check">15 000</output></label><input id="r-check" type="range" min="2000" max="300000" step="1000" value="15000"></div>
+    <div class="rng"><label for="r-rate">Купят после рассылки <output id="o-rate">2%</output></label><input id="r-rate" type="range" min="0.5" max="10" step="0.5" value="2"></div>
+    <p class="fine">Рекламное сообщение Meta — 43,20 ₸ за контакт, входящие от клиентов бесплатны. Подписка WABase — 39 990 ₸ в месяц.</p>
+   </div>
+   <div class="cout" aria-live="polite">
+    <div class="row"><span>Подписка и сообщения Meta</span><b id="c-cost">169 590 ₸</b></div>
+    <div class="row"><span>Продаж после рассылки</span><b id="c-sales">60</b></div>
+    <div class="row"><span>Выручка с одной рассылки</span><b id="c-rev">900 000 ₸</b></div>
+    <div class="hr"></div>
+    <span style="color:rgba(255,255,255,.62);font-size:16px">Каждый вложенный тенге возвращает</span>
+    <div class="roi" id="c-roi">×5,3</div>
+    <a class="btn btn-l" href="#form" data-cta="calc">Посчитать на мою базу</a>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+ <div class="w">
+  <span class="kick">Сравните</span>
+  <h2 class="h2">Почему не «серый» сервис</h2>
+  <div class="tbl" role="table" aria-label="Сравнение">
+   <div class="tr" role="row"><div role="columnheader"></div><div role="columnheader">Обычный WhatsApp и «серые» сервисы</div><div role="columnheader" style="color:var(--brand)">WABase — официальный API</div></div>
+   <div class="tr" role="row"><div role="cell">Блокировка номера</div><div class="x" role="cell">Частая и без предупреждения</div><div class="y" role="cell">Не блокируют за рассылки по одобренным шаблонам</div></div>
+   <div class="tr" role="row"><div role="cell">Объём</div><div class="x" role="cell">Десятки сообщений в день, вручную</div><div class="y" role="cell">Тысячи в день, автоматически</div></div>
+   <div class="tr" role="row"><div role="cell">Менеджеры</div><div class="x" role="cell">Один телефон на всех</div><div class="y" role="cell">Сколько нужно, на одном номере</div></div>
+   <div class="tr" role="row"><div role="cell">CRM и чат-бот</div><div class="x" role="cell">Нет или через костыли</div><div class="y" role="cell">amoCRM, Битрикс24, 1С, бот 24/7</div></div>
+   <div class="tr" role="row"><div role="cell">Подтверждённый аккаунт</div><div class="x" role="cell">Нет</div><div class="y" role="cell">Поможем пройти верификацию Meta</div></div>
+  </div>
+ </div>
+</section>
+
+<section class="sec" id="price" style="padding-top:0">
+ <div class="w">
+  <span class="kick">Цена</span>
+  <h2 class="h2">Один тариф. Без скрытых платежей</h2>
+  <div class="pgrid">
+   <div class="plan">
+    <div class="top"><h3>WABA Pro</h3><span class="badge">Подключение под ключ</span></div>
+    <div class="price">39&nbsp;990&nbsp;₸ <small>/ месяц</small></div>
+    <ul class="inc">
+     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Официальный номер WhatsApp API</li>
+     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Массовые рассылки и чат-бот</li>
+     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Все менеджеры в одном окне</li>
+     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Интеграция с CRM</li>
+     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Верификация и шаблоны — делаем мы</li>
+     <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Поддержка в WhatsApp</li>
+    </ul>
+    <p class="fine">Отдельно Meta берёт плату за начатые диалоги: рекламные — 43,20 ₸, сервисные и коды подтверждения — 6,90 ₸. Входящие от клиентов бесплатны.</p>
+    <a class="btn btn-p" href="#form" data-cta="price" style="margin-top:28px">Подключить WABA Pro</a>
+   </div>
+   <div class="guar">
+    <b class="big">Гарантия</b>
+    <h3>Первая рассылка окупит подписку — или вернём 39&nbsp;990&nbsp;₸</h3>
+    <p>Если продажи с первой рассылки не покроют стоимость месяца, возвращаем деньги за этот месяц.</p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="sec fsec" id="form">
+ <div class="w fg">
+  <div>
+   <span class="kick">Заявка · 1 минута</span>
+   <h2 class="h2">Посчитаем рассылку на вашу базу</h2>
+   <p class="lead">Ответьте на три вопроса — менеджер придёт с готовым расчётом и планом подключения.</p>
+   <ol class="flist">
+    <li><b>1</b>Звонок 15 минут — разбираем задачу</li>
+    <li><b>2</b>Расчёт стоимости рассылки на вашу базу</li>
+    <li><b>3</b>Подключение и первая рассылка за 1–3 дня</li>
+   </ol>
+  </div>
+  <form class="form" id="lead" novalidate>
+   <div class="fbody" style="display:flex;flex-direction:column;gap:24px">
+    <div class="two">
+     <label class="fld">Как к вам обращаться<input name="name" autocomplete="given-name" placeholder="Имя" required></label>
+     <label class="fld">Номер WhatsApp<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 701 123 45 67" required></label>
+    </div>
+    <fieldset><legend>Сфера бизнеса</legend><div class="chips">
+     <label><input type="radio" name="sphere" value="Автодилер, автосервис"><span>Автодилер, автосервис</span></label>
+     <label><input type="radio" name="sphere" value="Клиника, медицина"><span>Клиника, медицина</span></label>
+     <label><input type="radio" name="sphere" value="Образование"><span>Образование</span></label>
+     <label><input type="radio" name="sphere" value="Ритейл, e-commerce"><span>Ритейл, e-commerce</span></label>
+     <label><input type="radio" name="sphere" value="Недвижимость"><span>Недвижимость</span></label>
+     <label><input type="radio" name="sphere" value="Услуги"><span>Услуги</span></label>
+     <label><input type="radio" name="sphere" value="Другое"><span>Другое</span></label>
+    </div></fieldset>
+    <fieldset><legend>Клиентов в базе</legend><div class="chips">
+     <label><input type="radio" name="base" value="до 1 000"><span>до 1 000</span></label>
+     <label><input type="radio" name="base" value="1–5 тыс."><span>1–5 тыс.</span></label>
+     <label><input type="radio" name="base" value="5–20 тыс."><span>5–20 тыс.</span></label>
+     <label><input type="radio" name="base" value="больше 20 тыс."><span>больше 20 тыс.</span></label>
+    </div></fieldset>
+    <fieldset><legend>Где ведёте клиентов</legend><div class="chips">
+     <label><input type="radio" name="crm" value="amoCRM"><span>amoCRM</span></label>
+     <label><input type="radio" name="crm" value="Битрикс24"><span>Битрикс24</span></label>
+     <label><input type="radio" name="crm" value="1С"><span>1С</span></label>
+     <label><input type="radio" name="crm" value="Другая CRM"><span>Другая</span></label>
+     <label><input type="radio" name="crm" value="Нет CRM"><span>Нет CRM</span></label>
+    </div></fieldset>
+    <label class="cons"><input type="checkbox" name="consent"><span>Согласен на обработку персональных данных и с <a href="https://wabase.ai/privacy/" target="_blank" rel="noopener">политикой конфиденциальности</a></span></label>
+    <p class="err" id="err" role="alert"></p>
+    <button class="btn btn-p" type="submit">Получить расчёт в WhatsApp</button>
+    <p class="fine" style="text-align:center">Откроется WhatsApp с готовым сообщением — отправьте его, и менеджер ответит в рабочее время.</p>
+   </div>
+   <div class="ok">
+    <svg width="56" height="56" viewBox="0 0 56 56" style="margin:0 auto" aria-hidden="true"><circle cx="28" cy="28" r="28" fill="#E6F4EE"/><path d="M18 28.5l7 7 13-14" fill="none" stroke="#0A7A55" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <h3>Заявка принята</h3>
+    <p>Если WhatsApp не открылся — нажмите кнопку ниже и отправьте сообщение.</p>
+    <a class="btn btn-p" id="wa-again" href="https://wa.me/77017433301" target="_blank" rel="noopener">Открыть WhatsApp</a>
+   </div>
+  </form>
+ </div>
+</section>
+
+<section class="sec" id="faq">
+ <div class="w">
+  <div style="text-align:center"><span class="kick">Вопросы</span><h2 class="h2" style="margin-left:auto;margin-right:auto">Частые вопросы</h2></div>
+  <div class="faq">
+   <details><summary>Точно не заблокируют номер?</summary><p>WhatsApp Business API — официальный канал Meta. Рассылки по одобренным шаблонам клиентам, которые дали согласие на сообщения, не приводят к блокировке. Мы помогаем составить шаблоны так, чтобы их одобрили.</p></details>
+   <details><summary>Сколько в итоге стоит рассылка?</summary><p>Подписка — 39 990 ₸ в месяц, плюс оплата Meta за начатые диалоги: рекламное сообщение — 43,20 ₸, сервисное — 6,90 ₸. Входящие от клиентов бесплатны. Точную сумму на вашу базу посчитаем на звонке.</p></details>
+   <details><summary>Можно оставить мой текущий номер?</summary><p>Да. В режиме Coexistence один номер работает и в приложении WhatsApp Business, и через API — переписки синхронизируются.</p></details>
+   <details><summary>Что нужно от нас для подключения?</summary><p>Зарегистрированная компания или ИП, документы для проверки бизнеса в Meta и 15 минут на звонок. Остальное делаем мы.</p></details>
+   <details><summary>Есть интеграция с моей CRM?</summary><p>amoCRM, Битрикс24 и 1С — готовые интеграции. Другие системы подключаем через API и вебхуки.</p></details>
+   <details><summary>Как работает гарантия?</summary><p>Если продажи с первой рассылки не покроют стоимость месяца подписки, вернём 39&nbsp;990&nbsp;₸ за этот месяц.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="final">
+ <div class="w">
+  <div><h2>Первая рассылка — уже на этой неделе</h2><p>С гарантией, что она окупит подписку.</p></div>
+  <div class="cta-row" style="margin-top:0">
+   <a class="btn btn-p" href="#form" data-cta="final">Получить подключение</a>
+   <a class="btn btn-g js-wa" href="https://wa.me/77017433301" target="_blank" rel="noopener" data-cta="final">Написать в WhatsApp</a>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer>
+ <div class="w">
+  <span>© 2026 WABase — официальный WhatsApp Business API в Казахстане</span>
+  <span><a href="https://wabase.ai/">wabase.ai</a> · <a href="https://wabase.ai/privacy/">Конфиденциальность</a> · <a href="https://wabase.ai/terms/">Условия</a></span>
+ </div>
+</footer>
+
+<div class="mbar" id="mbar">
+ <a class="btn btn-p" href="#form" data-cta="mobile_bar" style="flex:1">Рассчитать рассылку</a>
+ <a class="btn btn-g js-wa" href="https://wa.me/77017433301" target="_blank" rel="noopener" data-cta="mobile_bar" aria-label="Написать в WhatsApp"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.6a8.5 8.5 0 0 1-12.6 7.4L3.5 20.5l1.6-4.3A8.5 8.5 0 1 1 20.5 11.6z"/></svg></a>
+</div>
+
+<script>
+(function(){
+ var WA='77017433301', PIXEL='2194966491265683', GA='G-9PTZ8ZMG2E', PH='phc_TWTf4LHI7TmvZYmvLkxEmPwOJME9ayKxum9xBGMqKvi';
+ var fmt=function(n){return Math.round(n).toLocaleString('ru-RU').replace(/\s/g,'\u00a0')};
+ var uid=function(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)};
+ var ck=function(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):undefined};
+ var qs=new URLSearchParams(location.search), camp=qs.get('utm_campaign')||'', src=qs.get('utm_source')||'';
+
+ /* ---- трекеры: грузим после отрисовки страницы, чтобы не тормозить первый экран ---- */
+ var Q=[], booted=false;
+ function track(f){booted?run(f):Q.push(f)}
+ function run(f){try{f()}catch(e){}}
+ function boot(){
+  if(booted)return; booted=true;
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init',PIXEL); fbq('track','PageView');
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset get_distinct_id getGroups get_session_id get_session_replay_url alias set_config startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing debug".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init(PH,{api_host:'https://us.i.posthog.com',defaults:'2025-05-24',person_profiles:'identified_only',capture_dead_clicks:true,enable_heatmaps:true,session_recording:{maskAllInputs:true}});
+  posthog.register({site:'go.wabase.ai',page_type:'ad_landing'});
+  window.dataLayer=window.dataLayer||[]; window.gtag=function(){dataLayer.push(arguments)};
+  var g=document.createElement('script'); g.async=true; g.src='https://www.googletagmanager.com/gtag/js?id='+GA; document.head.appendChild(g);
+  gtag('js',new Date()); gtag('config',GA);
+  Q.splice(0).forEach(run);
+ }
+ function later(){ window.requestIdleCallback ? requestIdleCallback(boot,{timeout:2500}) : setTimeout(boot,1200) }
+ if(document.readyState==='complete') later(); else addEventListener('load',later);
+ ['pointerdown','keydown','touchstart','scroll'].forEach(function(e){addEventListener(e,boot,{once:true,passive:true})});
+
+ /* ---- WhatsApp-кнопки ---- */
+ var hello='Здравствуйте! Хочу подключить WhatsApp Business API для рассылок.'+(camp?'\n\n(реклама: '+camp+')':'');
+ document.querySelectorAll('.js-wa').forEach(function(a){
+  a.href='https://wa.me/'+WA+'?text='+encodeURIComponent(hello);
+  a.addEventListener('click',function(){
+   var id=uid(), where=a.getAttribute('data-cta')||'';
+   track(function(){fbq('track','Contact',{content_name:'whatsapp_'+where},{eventID:id})});
+   track(function(){posthog.capture('whatsapp_clicked',{event_id:id,cta:where,fbp:ck('_fbp'),fbc:ck('_fbc')})});
+   track(function(){gtag('event','contact',{method:'whatsapp',cta:where})});
+   boot();
+  });
+ });
+ document.querySelectorAll('a[href="#form"]').forEach(function(a){
+  a.addEventListener('click',function(){var w=a.getAttribute('data-cta');track(function(){posthog.capture('cta_clicked',{cta:w})})});
+ });
+
+ /* ---- калькулятор ---- */
+ var rb=document.getElementById('r-base'), rc=document.getElementById('r-check'), rr=document.getElementById('r-rate'), used=false;
+ function fill(r){r.style.setProperty('--p',((r.value-r.min)/(r.max-r.min)*100)+'%')}
+ function calc(){
+  var b=+rb.value, c=+rc.value, r=+rr.value;
+  var cost=39990+b*43.2, sales=b*r/100, rev=sales*c, roi=cost?rev/cost:0;
+  document.getElementById('o-base').textContent=fmt(b);
+  document.getElementById('o-check').textContent=fmt(c);
+  document.getElementById('o-rate').textContent=String(r).replace('.',',')+'%';
+  document.getElementById('c-cost').textContent=fmt(cost)+'\u00a0₸';
+  document.getElementById('c-sales').textContent=fmt(sales);
+  document.getElementById('c-rev').textContent=fmt(rev)+'\u00a0₸';
+  document.getElementById('c-roi').textContent='×'+roi.toFixed(1).replace('.',',');
+  [rb,rc,rr].forEach(fill);
+ }
+ [rb,rc,rr].forEach(function(r){r.addEventListener('input',function(){calc();if(!used){used=true;track(function(){posthog.capture('calculator_used')})}})});
+ calc();
+
+ /* ---- форма ---- */
+ var f=document.getElementById('lead'), err=document.getElementById('err');
+ f.addEventListener('submit',function(e){
+  e.preventDefault();
+  var E=f.elements, v=function(n){var x=f.querySelector('input[name="'+n+'"]:checked');return x?x.value:''};
+  var name=E['name'].value.trim(), phone=E['phone'].value.trim(), d=phone.replace(/\D/g,'');
+  if(d.length===11&&d[0]==='8')d='7'+d.slice(1);
+  if(d.length===10&&d[0]==='7')d='7'+d;
+  if(!name){err.textContent='Напишите, как к вам обращаться';E['name'].focus();return}
+  if(d.length<10){err.textContent='Проверьте номер WhatsApp';E['phone'].focus();return}
+  if(!E['consent'].checked){err.textContent='Отметьте согласие на обработку данных';return}
+  err.textContent='';
+  var sphere=v('sphere'), base=v('base'), crm=v('crm'), id=uid();
+  var msg='Здравствуйте! Хочу подключить WhatsApp Business API.\nИмя: '+name+'\nНомер: +'+d+(sphere?'\nСфера: '+sphere:'')+(base?'\nБаза: '+base:'')+(crm?'\nCRM: '+crm:'')+(camp?'\n\n(реклама: '+camp+')':'');
+  var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+  track(function(){
+   posthog.identify('wa:'+d,{phone:'+'+d,first_name:name,lead_sphere:sphere,lead_base:base,lead_crm:crm,lead_utm_campaign:camp,lead_utm_source:src});
+   posthog.capture('lead_submitted',{event_id:id,sphere:sphere,base:base,crm:crm,utm_campaign:camp,utm_source:src,fbp:ck('_fbp'),fbc:ck('_fbc')});
+  });
+  track(function(){fbq('track','Lead',{content_name:'WABA подключение',content_category:sphere||'не указана'},{eventID:id})});
+  track(function(){gtag('event','generate_lead',{method:'whatsapp_form',sphere:sphere})});
+  boot();
+  document.getElementById('wa-again').href=url;
+  f.classList.add('done');
+  window.open(url,'_blank');
+ });
+
+ /* ---- мобильная панель ---- */
+ var bar=document.getElementById('mbar'), form=document.getElementById('form');
+ function mb(){var y=scrollY, fr=form.getBoundingClientRect();bar.classList.toggle('on',y>520&&(fr.top>innerHeight||fr.bottom<0))}
+ addEventListener('scroll',mb,{passive:true});
+})();
+</script>
+</body>
+</html>
