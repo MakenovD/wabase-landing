@@ -96,6 +96,7 @@ img,svg{display:block}
 .stat b{display:block;font-size:clamp(30px,3.4vw,44px);letter-spacing:-.04em;line-height:1;font-weight:700}
 .stat span{display:block;margin-top:10px;font-size:14.5px;color:rgba(255,255,255,.6);line-height:1.4}
 .note-d{position:relative;z-index:1;font-size:12.5px;color:rgba(255,255,255,.38);padding:0 0 28px}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
 /* logos */
 .logos{background:#fff;border-bottom:1px solid var(--line)}
 .logos .w{display:flex;align-items:center;gap:32px;padding-top:34px;padding-bottom:34px}
@@ -499,6 +500,7 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
    <div class="fbody" style="display:flex;flex-direction:column;gap:24px">
     <div class="two">
      <label class="fld">Как к вам обращаться<input name="name" autocomplete="given-name" placeholder="Имя" required></label>
+     <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
      <label class="fld">Номер WhatsApp<input name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+7 701 123 45 67" required></label>
     </div>
     <fieldset><legend>Сфера бизнеса</legend><div class="chips">
@@ -582,6 +584,13 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
  var uid=function(){return (window.crypto&&crypto.randomUUID)?crypto.randomUUID():Date.now().toString(36)+Math.random().toString(36).slice(2)};
  var ck=function(n){var m=document.cookie.match('(?:^|; )'+n+'=([^;]*)');return m?decodeURIComponent(m[1]):undefined};
  var qs=new URLSearchParams(location.search), camp=qs.get('utm_campaign')||'', src=qs.get('utm_source')||'';
+ var LEADS='https://script.google.com/macros/s/AKfycbwXPRzOvV2LaZB_gpV_WBkdM4vwcRumFCJulMQSu9uxk161O9B_bA4WDYzxiDoEAak/exec';
+ function sendLead(o){
+  if(LEADS.indexOf('https://')!==0)return;
+  var body=JSON.stringify(o);
+  try{ if(navigator.sendBeacon&&navigator.sendBeacon(LEADS,new Blob([body],{type:'text/plain;charset=UTF-8'})))return }catch(e){}
+  try{ fetch(LEADS,{method:'POST',mode:'no-cors',keepalive:true,headers:{'Content-Type':'text/plain;charset=UTF-8'},body:body}) }catch(e){}
+ }
 
  /* ---- трекеры: грузим после отрисовки страницы, чтобы не тормозить первый экран ---- */
  var Q=[], booted=false;
@@ -652,6 +661,8 @@ footer a{text-decoration:none}footer a:hover{color:#fff}
   var sphere=v('sphere'), base=v('base'), crm=v('crm'), id=uid();
   var msg='Здравствуйте! Хочу подключить WhatsApp Business API.\nИмя: '+name+'\nНомер: +'+d+(sphere?'\nСфера: '+sphere:'')+(base?'\nБаза: '+base:'')+(crm?'\nCRM: '+crm:'')+(camp?'\n\n(реклама: '+camp+')':'');
   var url='https://wa.me/'+WA+'?text='+encodeURIComponent(msg);
+  sendLead({event_id:id,name:name,phone:d,sphere:sphere,base:base,crm:crm,website:(E['website']||{}).value||'',
+   utm_source:src,utm_medium:qs.get('utm_medium')||'',utm_campaign:camp,utm_content:qs.get('utm_content')||'',utm_term:qs.get('utm_term')||''});
   track(function(){
    posthog.identify('wa:'+d,{phone:'+'+d,first_name:name,lead_sphere:sphere,lead_base:base,lead_crm:crm,lead_utm_campaign:camp,lead_utm_source:src});
    posthog.capture('lead_submitted',{event_id:id,sphere:sphere,base:base,crm:crm,utm_campaign:camp,utm_source:src,fbp:ck('_fbp'),fbc:ck('_fbc')});
