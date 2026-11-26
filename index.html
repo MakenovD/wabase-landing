@@ -385,6 +385,140 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
 /* белый и серый: скриншоты iPhone вместо макетов */
 .bwi{display:block;width:280px;height:auto;filter:drop-shadow(0 24px 30px rgba(6,16,12,.22)) drop-shadow(0 4px 8px rgba(6,16,12,.12))}
 @media (max-width:640px){.bwi{width:270px}}
+/* ===== v3: короткий лендинг, каждый блок — один экран телефона ===== */
+@media (max-width:640px){
+ .hdr .w{height:60px}
+ .sec{padding:52px 0}
+ .h2{font-size:29px;line-height:1.07;letter-spacing:-.03em;margin-top:10px}
+ .lead{font-size:15.5px;line-height:1.5;margin-top:10px}
+ .kick{font-size:11.5px;gap:8px}
+ /* первый экран: текст, кнопки и верх телефона в одном экране */
+ .hero{padding-top:66px}
+ .hero-g{display:flex;flex-direction:column;gap:0;min-height:calc(100svh - 66px)}
+ .hero-l{padding-bottom:16px}
+ .pill{font-size:12.5px;padding:6px 12px 6px 6px}.pill i{width:20px;height:20px}
+ .h1,.h1.hv-a{font-size:clamp(28px,4.3svh,36px);line-height:1.04;margin-top:14px}
+ .h1.hv-b,.h1.hv-c{font-size:clamp(26px,3.9svh,32px);line-height:1.06}
+ .hero p.sub{font-size:15.5px;line-height:1.5;margin-top:12px}
+ .cta-row{margin-top:18px;gap:8px}
+ .cta-row .btn{min-height:52px;font-size:15.5px}
+ .hero .trust{display:none}
+ .hero .phone-wrap{flex:1 1 0;min-height:170px;width:min(250px,64vw);margin:0 auto;overflow:hidden;-webkit-mask-image:linear-gradient(#000 70%,transparent);mask-image:linear-gradient(#000 70%,transparent)}
+ .hero .dev{width:100%;filter:none;margin:0}
+ .stats.s3{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+ .stats.s3 .stat,.stats.s3 .stat:nth-child(3),.stats.s3 .stat:nth-child(even),.stats.s3 .stat:first-child{padding:18px 0 6px;border:0}
+ .stats.s3 .stat b{font-size:23px}
+ .stats.s3 .stat span{font-size:11.5px;line-height:1.35;margin-top:6px}
+ .note-d{font-size:11px;padding-bottom:18px}
+ /* клиенты */
+ .logos .w{padding-top:22px;padding-bottom:24px;gap:14px;align-items:center}
+ .logos p{font-size:12px;text-align:center}
+ .lw{justify-content:center;gap:14px 18px}
+ .lw .lg{height:calc(var(--h,30px)*.78)}
+ .lt{gap:6px}.lt b{font-size:8.5px}.ty{width:26px;height:18px}
+ /* как это видит клиент: два телефона рядом */
+ .pf-r{margin-top:20px}
+ .shots{display:grid;grid-template-columns:1fr 1fr;gap:12px;overflow:visible;margin:0;padding:0}
+ .shot{gap:10px}
+ .shot img{filter:drop-shadow(0 12px 16px rgba(6,16,12,.22))}
+ .shot figcaption{padding:0 2px}
+ .shot figcaption b{font-size:13.5px;gap:6px}
+ .shot figcaption span{font-size:12px;line-height:1.35;padding-left:16px}
+ .pf-note{font-size:11.5px;line-height:1.45;margin:12px 2px 0}
+ /* калькулятор */
+ .cwrap{margin-top:18px;gap:10px}
+ .cin{padding:18px 20px 16px;gap:12px}
+ .rng label{font-size:14.5px}.rng output{font-size:19px}
+ input[type=range]{height:34px;margin-top:4px}
+ .cin .fine{font-size:11.5px;line-height:1.45;margin:2px 0 0}
+ .cout{padding:20px;gap:8px}
+ .cout .cap{font-size:14px}
+ .cout .roi{font-size:40px;margin:0 0 4px}
+ .cout .row{font-size:14px}
+ .cout .btn{margin-top:8px;min-height:50px}
+ /* белый и серый: два телефона рядом */
+ .bw{grid-template-columns:1fr 1fr;gap:18px 12px;margin-top:20px;justify-items:stretch}
+ .bwi{width:100%}
+ .bwc{gap:10px}
+ .bwc figcaption{font-size:12px;max-width:none;line-height:1.35}
+ .bwc figcaption b{font-size:15px;margin-bottom:2px}
+ .mech{grid-column:1/-1;gap:12px;padding-top:2px}
+ .mi{gap:12px}.mi>span{width:26px;height:26px;font-size:13px}
+ .mi h3{font-size:15.5px;margin:2px 0 2px}.mi p{font-size:13.5px;line-height:1.45}
+ .analogy{display:none}
+ /* истории: листаются вбок, карточка = экран */
+ .cgrid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;margin:14px -20px 0;padding:4px 20px 12px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+ .cgrid::-webkit-scrollbar{display:none}
+ .case{flex:0 0 86%;scroll-snap-align:center;padding:20px;gap:12px}
+ .case h3{font-size:22px}
+ .st{font-size:14px}.st dd{margin-bottom:6px}
+ .kpi{gap:8px}.kpi div{padding:12px}.kpi b{font-size:22px}.kpi span{font-size:11.5px}
+ .src{font-size:11.5px;margin-top:8px}
+ .swipe{margin:14px 0 0}
+ /* цена */
+ .pgrid{margin-top:18px;gap:10px}
+ .guar{padding:20px 22px;gap:6px}
+ .guar b.big{font-size:28px}
+ .guar h3{font-size:18px;line-height:1.2}
+ .guar p{font-size:13.5px}
+ .guar:before{width:200px;height:200px;right:-80px;top:-80px}
+ .plan{padding:20px 22px}
+ .plan h3{font-size:20px}
+ .price{font-size:40px;margin-top:14px}.price small{font-size:15px}
+ .inc{gap:6px;margin-top:14px}.inc li{font-size:14.5px}.inc svg{margin-top:3px}
+ .plan .fine{font-size:11.5px;line-height:1.45}
+ .plan .btn{margin-top:14px!important;min-height:52px}
+ /* заявка */
+ .fg{gap:18px}
+ .fsec .lead{display:none}
+ .flist{margin-top:14px;gap:6px}.flist li{font-size:14px;gap:10px;align-items:center}.flist b{width:24px;height:24px;font-size:12px}
+ .form{padding:20px}
+ .quiz .fbody{gap:14px}
+ fieldset.qs legend,.qlead{font-size:18px;margin-bottom:12px}
+ .quiz .chips{gap:8px}.quiz .chips span{min-height:44px;font-size:14.5px;padding:0 14px}
+ /* вопросы */
+ .faq{margin-top:18px}
+ details{padding:15px 0}
+ summary{font-size:15.5px;gap:16px}
+ details p{font-size:14.5px;margin-top:8px}
+ /* финал */
+ .final .w{padding-top:52px;padding-bottom:52px;gap:20px}
+ .final h2{font-size:28px;line-height:1.08}
+ .final p{font-size:15px;margin-top:10px}
+ footer .w{padding-bottom:92px;font-size:12.5px}
+}
+.hero picture{display:block}
+@media (max-width:640px){
+ .calc-lead-x{display:none}
+ #calc .lead{font-size:15px}
+ .bw{max-width:340px;margin-left:auto;margin-right:auto}
+ .mi p{font-size:13px}
+ .plan .fine{margin-top:12px}
+}
+@media (max-width:640px){
+ .h2{font-size:27px}
+ /* калькулятор: итог одной карточкой */
+ .cout{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px 10px;align-items:end}
+ .cout .cap,.cout .roi,.cout .btn{grid-column:1/-1}
+ .cout .roi{margin:0 0 6px}
+ .cout .hr{display:none}
+ .cout .row{flex-direction:column-reverse;justify-content:flex-end;gap:3px;font-size:11px;line-height:1.3}
+ .cout .row b,.row b.mint{font-size:17px;color:#fff}.row b.mint{color:var(--mint)}
+ .cin{gap:10px}
+ .rng label{font-size:14px}
+ /* белый и серый: только заголовки пунктов */
+ .bw{max-width:320px}
+ .mech{gap:8px}.mi{align-items:center}.mi h3{margin:0}.mi p{display:none}
+ /* цена: пункты в две колонки */
+ .inc{grid-template-columns:1fr 1fr;gap:8px 12px}.inc li{font-size:13.5px;line-height:1.35}
+}
+@media (max-width:640px){
+ .sec{padding:44px 0}
+ .cin .fine{font-size:11px}
+ .cwrap{margin-top:14px}
+ #price .h2{font-size:26px}
+}
+@media (max-width:640px){.shots{max-width:330px;margin:0 auto}.pf-r{margin-top:16px}}
 </style>
 </head>
 <body>
@@ -431,7 +565,7 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
    <div class="phone-wrap" aria-hidden="true">
     <div class="float f1"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A7A55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3.5v5.2c0 4.6-3.2 7.6-7.5 9.3-4.3-1.7-7.5-4.7-7.5-9.3V6.5z"/><path d="M8.8 12.2l2.2 2.2 4.3-4.4"/></svg></i><span>Номер оформлен на компанию<small>а не на менеджера</small></span></div>
     <div class="float f2"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A7A55" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></i><span>Клиент подтвердил запись<small>одним касанием</small></span></div>
-    <img class="dev" src="img/wa-hero.webp" width="720" height="1510" alt="Сообщение от автосервиса в официальном WhatsApp: напоминание о ТО с кнопками «Подтверждаю» и «Перенести запись», клиент ответил «Подтверждаю»" fetchpriority="high">
+    <picture><source media="(max-width:640px)" srcset="img/wa-hero-m.webp" width="720" height="1510"><img class="dev" src="img/wa-hero.webp" width="720" height="1510" alt="Сообщение от автосервиса в официальном WhatsApp: напоминание о ТО с кнопками «Подтверждаю» и «Перенести запись», клиент ответил «Подтверждаю»" fetchpriority="high"></picture>
    </div>
   </div>
   <div class="stats s3">
@@ -468,10 +602,9 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
    <div class="pf-l">
     <span class="kick">Как это видит клиент</span>
     <h2 class="h2">Одно и то же напоминание. Разный ответ</h2>
-    <p class="lead">Первый скриншот — сообщение с личного номера менеджера: WhatsApp показывает клиенту, что номера нет в контактах, и предлагает его заблокировать. Второй — то же напоминание от официального аккаунта компании, с кнопками ответа. Клиент подтверждает запись одним касанием.</p>
+    <p class="lead">Слева — личный номер менеджера: WhatsApp предлагает заблокировать незнакомца. Справа — официальный аккаунт: клиент подтверждает запись одной кнопкой.</p>
    </div>
    <div class="pf-r">
-    <p class="swipe">Листайте, чтобы сравнить →</p>
     <div class="shots">
     <figure class="shot bad">
      <img src="img/wa-unknown.webp" width="720" height="1510" loading="lazy" alt="Напоминание о записи с незнакомого номера: WhatsApp показывает плашку «Нет в ваших контактах» с кнопками «Заблокировать» и «Добавить», клиент не ответил">
@@ -492,7 +625,7 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
  <div class="w">
   <span class="kick">Расчёт</span>
   <h2 class="h2">Сколько денег лежит в вашем WhatsApp</h2>
-  <p class="lead">Клиенту, который уже у вас покупал, продать снова проще, чем найти нового. Подвигайте ползунки — посчитаем, что может принести одна рассылка по вашей базе.</p>
+  <p class="lead"><span class="calc-lead-x">Тому, кто уже у вас покупал, продать снова проще, чем найти нового клиента. </span>Подвигайте ползунки — посчитаем, что принесёт одна рассылка по вашей базе.</p>
   <div class="cwrap">
    <div class="cin">
     <div class="rng"><label for="r-base">Клиентов в базе <output id="o-base">3 000</output></label><input id="r-base" type="range" min="500" max="30000" step="500" value="3000"></div>
@@ -513,41 +646,12 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
  </div>
 </section>
 
-<!-- 3. Почему вы им не пишете -->
-<section class="sec" style="padding-top:0">
- <div class="w">
-  <span class="kick">Знакомо?</span>
-  <h2 class="h2">Почему вы им не пишете</h2>
-  <div class="grid3">
-   <div class="pcard"><span class="n g">01</span><h3>Вручную — это недели</h3><p>Написать 3 000 клиентам по одному невозможно. Поэтому база просто лежит в телефоне.</p></div>
-   <div class="pcard"><span class="n g">02</span><h3>Менеджеры пишут с личных номеров</h3><p>Не видно, кто что ответил и кому обещал перезвонить. Клиенты общаются с сотрудником, а не с компанией.</p></div>
-   <div class="pcard"><span class="n g">03</span><h3>Непонятно, что написать</h3><p>Чтобы не надоесть и не попасть в спам. Мы даём готовые тексты под вашу нишу: напоминание о записи, поздравление, повод вернуться.</p></div>
-  </div>
- </div>
-</section>
-
-<!-- 4. Скрытый риск -->
-<section class="sec risk">
- <div class="w rgrid">
-  <div>
-   <span class="kick red">Скрытый риск</span>
-   <h2 class="h2">Риск, о котором не думают до первой блокировки</h2>
-   <p class="lead">Обычный WhatsApp сделан для переписки с людьми, а не для рассылок. Когда с одного номера уходят сотни одинаковых сообщений, WhatsApp может заблокировать номер — часто без предупреждения.</p>
-  </div>
-  <ul class="rlist">
-   <li><b>Номер заблокирован</b><span>Клиенты пишут на старый номер и не получают ответа. Новый номер они не знают.</span></li>
-   <li><b>Пропала история</b><span>Вместе с номером теряется доступ к перепискам и договорённостям за годы.</span></li>
-   <li><b>Уволился менеджер</b><span>Его телефон — его номер. Клиенты, с которыми он переписывался, уходят вместе с ним.</span></li>
-  </ul>
- </div>
-</section>
-
 <!-- 5. Белый и серый WhatsApp -->
 <section class="sec" id="how">
  <div class="w">
   <span class="kick">Как это работает</span>
   <h2 class="h2">Белый и серый WhatsApp</h2>
-  <p class="lead">Разница не в программе, а в том, на кого оформлен номер и кто разрешил рассылку.</p>
+  <p class="lead">Разница — в том, на кого оформлен номер и кто разрешил рассылку. Личный номер за массовые сообщения могут заблокировать вместе с перепиской за годы.</p>
   <div class="bw">
    <figure class="bwc grey">
     <img class="bwi" src="img/wa-grey.webp" width="720" height="1510" loading="lazy" alt="Рассылка с личного номера: три одинаковых сообщения со скидкой и окно «Этот аккаунт заблокирован» из-за спама">
@@ -560,7 +664,7 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
    <div class="mech">
     <div class="mi"><span>1</span><div><h3>Номер оформлен на компанию</h3><p>Он зарегистрирован в Meta, а не живёт в телефоне сотрудника. Уходят люди — номер и переписки остаются.</p></div></div>
     <div class="mi"><span>2</span><div><h3>Тексты одобрены заранее</h3><p>Meta проверяет шаблоны сообщений до рассылки. Поэтому за рассылку по своей базе номер не блокируют.</p></div></div>
-    <div class="mi"><span>3</span><div><h3>Клиент видит компанию</h3><p>Профиль компании и кнопки ответа — «Да, придём», «Перенести». Клиент отвечает в один тап, ответ приходит в тот же чат.</p></div></div>
+    <div class="mi"><span>3</span><div><h3>Профиль компании и кнопки ответа</h3><p>Кнопки «Да, придём», «Перенести» — клиент отвечает в один тап, ответ приходит в тот же чат.</p></div></div>
     <blockquote class="analogy">Это как машина с номерами и без. Ездить можно и так — но до первой проверки.</blockquote>
    </div>
   </div>
@@ -573,74 +677,39 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
   <span class="kick">Истории клиентов</span>
   <h2 class="h2">Как это работает у тех, кто уже перешёл</h2>
   <p class="lead">Цифры за последние 30 дней — из нашей платформы.</p>
+  <p class="swipe">Листайте →</p>
   <div class="cgrid">
    <article class="case">
     <div class="tag"><b>Автодилер</b><span>Костанай · с мая 2026</span></div>
     <h3>Toyota Center Kostanay</h3>
     <dl class="st"><dt>Задача</dt><dd>Отдавать клиенту чек и сервисные уведомления без бумаги и SMS.</dd><dt>Что сделали</dt><dd>Чек и уведомления приходят в WhatsApp сразу после оплаты. Клиент отвечает в тот же чат, менеджер видит всю историю.</dd></dl>
     <div class="kpi"><div><b>≈4 900</b><span>диалогов с клиентами в месяц</span></div><div><b>10 589</b><span>сообщений клиентам за 30 дней</span></div></div>
-    <div class="qph">Отзыв и фото менеджера — добавим после согласования</div>
    </article>
    <article class="case">
     <div class="tag"><b>Детский бассейн</b><span>Алматы · с июля 2026</span></div>
     <h3>My Pool</h3>
     <dl class="st"><dt>Задача</dt><dd>Заранее знать, кто придёт на занятие, и не обзванивать всех вручную.</dd><dt>Что сделали</dt><dd>Накануне родители получают запрос подтвердить запись — с временем и тренером. Отвечают одной кнопкой.</dd></dl>
     <div class="kpi"><div><b>6 914</b><span>ответов родителей в WhatsApp</span></div><div><b>2 231</b><span>запрос подтверждения за 30 дней</span></div></div>
-    <div class="qph">Отзыв и фото администратора — добавим после согласования</div>
    </article>
    <article class="case">
     <div class="tag"><b>Студия лазерной эпиляции</b><span>Бишкек · с августа 2026</span></div>
     <h3>Nova Laser</h3>
     <dl class="st"><dt>Задача</dt><dd>Чтобы клиенты не забывали о записи и подтверждали её одним ответом.</dd><dt>Что сделали</dt><dd>Напоминание с кнопками «Да / Нет», уведомления о переносах и ежедневный отчёт о выручке владельцу.</dd></dl>
     <div class="kpi"><div><b>8 813</b><span>ответов клиентов — почти 2 на сообщение</span></div><div><b>4 587</b><span>напоминаний и уведомлений за 30 дней</span></div></div>
-    <div class="qph">Отзыв и фото владельца — добавим после согласования</div>
    </article>
    <article class="case">
     <div class="tag"><b>Автодилер</b><span>Астана · с июня 2026</span></div>
     <h3>Toyota City Astana</h3>
     <dl class="st"><dt>Задача</dt><dd>Чтобы покупатель возвращался на ТО именно к дилеру.</dd><dt>Что сделали</dt><dd>Поздравление с покупкой автомобиля и с днём рождения — с персональной скидкой 10% на сервис.</dd></dl>
     <div class="kpi"><div><b>1 650</b><span>ответов клиентов в WhatsApp</span></div><div><b>4 600</b><span>персональных сообщений за 30 дней</span></div></div>
-    <div class="qph">Отзыв и фото менеджера — добавим после согласования</div>
    </article>
   </div>
   <p class="src">Цифры — из платформы WABase за 30 дней по ноябрь 2026.</p>
  </div>
 </section>
 
-<!-- 7. Вам не нужен программист -->
-<section class="sec dark">
- <div class="w">
-  <span class="kick">Подключение</span>
-  <h2 class="h2">Вам не нужен программист</h2>
-  <p class="lead">Всю техническую часть делаем мы. От вас — документы компании и 15 минут на звонок.</p>
-  <div class="steps">
-   <div class="step s1"><span class="d">Шаг 1</span><div class="bar"></div><h3>Созвон на 15 минут</h3><p>Смотрим вашу базу и задачи, считаем стоимость, подбираем тексты сообщений.</p></div>
-   <div class="step s2"><span class="d">Шаг 2</span><div class="bar"></div><h3>Оформляем всё в Meta</h3><p>Проходим проверку бизнеса, подключаем номер и связываем с CRM, если она есть. Вы только присылаете документы.</p></div>
-   <div class="step s3"><span class="d">Шаг 3</span><div class="bar"></div><h3>Первая рассылка при вас</h3><p>Запускаем вместе, показываем, кто ответил, и обучаем команду. Дальше — с нашей поддержкой.</p></div>
-  </div>
- </div>
-</section>
-
-<!-- 8. Сравнение с альтернативами -->
-<section class="sec">
- <div class="w">
-  <span class="kick">Сравните</span>
-  <h2 class="h2">Чем ещё можно писать клиентам</h2>
-  <div class="tbl t5" role="table" aria-label="Сравнение способов писать клиентам">
-   <div class="tr" role="row"><div role="columnheader"></div><div role="columnheader" class="yh">Официальный WhatsApp</div><div role="columnheader">Личный WhatsApp</div><div role="columnheader">«Серые» сервисы</div><div role="columnheader">SMS</div></div>
-   <div class="tr" role="row"><div role="cell">Риск блокировки</div><div class="y" role="cell">Не блокируют за рассылку по одобренным шаблонам</div><div class="x" role="cell">Высокий при рассылках</div><div class="x" role="cell">Высокий</div><div class="x" role="cell">Нет</div></div>
-   <div class="tr" role="row"><div role="cell">Что видит клиент</div><div class="y" role="cell">Название вашей компании</div><div class="x" role="cell">Номер или имя сотрудника</div><div class="x" role="cell">Номер без названия компании</div><div class="x" role="cell">Имя отправителя</div></div>
-   <div class="tr" role="row"><div role="cell">Клиент может ответить</div><div class="y" role="cell">Да, в тот же чат</div><div class="x" role="cell">Да</div><div class="x" role="cell">Да</div><div class="x" role="cell">Нет</div></div>
-   <div class="tr" role="row"><div role="cell">Сколько сообщений</div><div class="y" role="cell">Тысячи в день, автоматически</div><div class="x" role="cell">Десятки, вручную</div><div class="x" role="cell">Сотни — пока не заблокируют</div><div class="x" role="cell">Тысячи</div></div>
-   <div class="tr" role="row"><div role="cell">Несколько менеджеров</div><div class="y" role="cell">Сколько нужно, на одном номере</div><div class="x" role="cell">Нет, один телефон</div><div class="x" role="cell">Нет</div><div class="x" role="cell">—</div></div>
-   <div class="tr" role="row"><div role="cell">Кнопки и картинки</div><div class="y" role="cell">Да</div><div class="x" role="cell">Нет</div><div class="x" role="cell">Частично</div><div class="x" role="cell">Нет</div></div>
-   <div class="tr" role="row"><div role="cell">Цена сообщения</div><div class="y" role="cell">43,20 ₸ рекламное, входящие бесплатно</div><div class="x" role="cell">Бесплатно</div><div class="x" role="cell">Подписка сервиса</div><div class="x" role="cell">За каждое SMS</div></div>
-  </div>
- </div>
-</section>
-
 <!-- 9. Гарантия и цена -->
-<section class="sec" id="price" style="padding-top:0">
+<section class="sec" id="price">
  <div class="w">
   <span class="kick">Цена</span>
   <h2 class="h2">Сначала снимаем риск, потом говорим о цене</h2>
@@ -734,7 +803,7 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
  </div>
 </section>
 
-<!-- 10. Вопросы как возражения -->
+<!-- Вопросы -->
 <section class="sec" id="faq">
  <div class="w">
   <div style="text-align:center"><span class="kick">Вопросы</span><h2 class="h2" style="margin-left:auto;margin-right:auto">Что обычно спрашивают</h2></div>
@@ -744,9 +813,7 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
    <details><summary>Мой номер останется моим?</summary><p>Да. Тот же номер работает и в приложении WhatsApp Business, и через официальный канал — переписки синхронизируются.</p></details>
    <details><summary>А если у меня нет CRM?</summary><p>Она не обязательна: чаты и рассылки работают в окне WABase. Если CRM есть — подключим amoCRM, Битрикс24 или 1С.</p></details>
    <details><summary>Точно не заблокируют номер?</summary><p>Официальный WhatsApp — это канал Meta для бизнеса. Рассылки по одобренным шаблонам клиентам, которые дали согласие на сообщения, не приводят к блокировке. Мы помогаем составить шаблоны так, чтобы их одобрили.</p></details>
-   <details><summary>Сколько в итоге стоит рассылка?</summary><p>Подписка — 39 990 ₸ в месяц, плюс оплата Meta за начатые диалоги: рекламное сообщение — 43,20 ₸, сервисное — 6,90 ₸. Входящие от клиентов бесплатны. Точную сумму на вашу базу посчитаем на звонке.</p></details>
    <details><summary>Что нужно от нас для подключения?</summary><p>Зарегистрированная компания или ИП, документы для проверки бизнеса в Meta и 15 минут на звонок. Остальное делаем мы.</p></details>
-   <details><summary>Как работает гарантия?</summary><p>Если продажи с первой рассылки не покроют стоимость месяца подписки, вернём 39&nbsp;990&nbsp;₸ за этот месяц.</p></details>
   </div>
  </div>
 </section>
@@ -895,10 +962,10 @@ fieldset.qs legend,.qlead{font-size:22px;font-weight:700;letter-spacing:-.02em;m
  });
 
  /* ---- мобильная панель ---- */
- var mbar=document.getElementById('mbar'), form=document.getElementById('form'), calcS=document.getElementById('calc');
+ var mbar=document.getElementById('mbar'), form=document.getElementById('form'), calcS=document.getElementById('calc'), fin=document.querySelector('.final');
  function mb(){var y=scrollY, fr=form.getBoundingClientRect(), cr=calcS.getBoundingClientRect();
   var away=function(r){return r.top>innerHeight||r.bottom<0};
-  mbar.classList.toggle('on',y>520&&away(fr)&&away(cr))}
+  mbar.classList.toggle('on',y>520&&away(fr)&&away(cr)&&(!fin||away(fin.getBoundingClientRect())))}
  addEventListener('scroll',mb,{passive:true});
 })();
 </script>
